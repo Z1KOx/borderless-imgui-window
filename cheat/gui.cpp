@@ -157,21 +157,6 @@ void gui::ResetDevice() noexcept
 	ImGui_ImplDX9_CreateDeviceObjects();
 }
 
-void gui::DestroyDevice() noexcept
-{
-	if (device)
-	{
-		device->Release();
-		device = nullptr;
-	}
-
-	if (d3d)
-	{
-		d3d->Release();
-		d3d = nullptr;
-	}
-}
-
 void gui::CreateImGui() noexcept
 {
 	IMGUI_CHECKVERSION();
@@ -183,7 +168,7 @@ void gui::CreateImGui() noexcept
 	ImGui::StyleColorsDark();
 
 	ImGui_ImplWin32_Init(window);
-	ImGui_ImplDX9_Init(device);
+	ImGui_ImplDX9_Init(device.Get());
 }
 
 void gui::DestroyImGui() noexcept

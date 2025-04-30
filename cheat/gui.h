@@ -1,5 +1,6 @@
 #pragma once
 #include <d3d9.h>
+#include <wrl/client.h>
 
 namespace gui
 {
@@ -19,8 +20,8 @@ namespace gui
 	inline POINTS position = { };
 
 	// direct x state vars
-	inline PDIRECT3D9 d3d = nullptr;
-	inline LPDIRECT3DDEVICE9 device = nullptr;
+	inline Microsoft::WRL::ComPtr<IDirect3D9> d3d = nullptr;
+	inline Microsoft::WRL::ComPtr<IDirect3DDevice9> device = nullptr;
 	inline D3DPRESENT_PARAMETERS presentParameters = { };
 
 	// handle window creation & destruction
@@ -30,7 +31,6 @@ namespace gui
 	// handle device creation & destruction
 	bool CreateDevice() noexcept;
 	void ResetDevice() noexcept;
-	void DestroyDevice() noexcept;
 
 	// handle ImGui creation & destruction
 	void CreateImGui() noexcept;

@@ -24,7 +24,6 @@ int __stdcall wWinMain(
 
 	// destroy gui
 	gui::DestroyImGui();
-	gui::DestroyDevice();
 	gui::DestroyHWindow();
 
 	return EXIT_SUCCESS;
